@@ -6,26 +6,26 @@ node {
 	}
 	stage('Compile Stage') {		
 		echo 'compile stage started'
-		def mvnHome = tool name: 'maven-3.9.5', type: 'maven'
-		bat "${mvnHome}/bin/mvn clean compile"
+		def mvnHome = tool name: 'maven-3-9-5', type: 'maven'
+		bat "\"${mvnHome}/bin/mvn\" clean compile"
 		echo 'compile stage completed'			
 	}
 	stage('Test Stage') {		
 		echo 'test stage started'
-		def mvnHome = tool name: 'maven-3.9.5', type: 'maven'
-		bat "${mvnHome}/bin/mvn test"
+		def mvnHome = tool name: 'maven-3-9-5', type: 'maven'
+		bat "\"${mvnHome}/bin/mvn\"  test"
 		echo 'test stage completed'			
 	}
 	stage('SonarQube Stage') {		
 		echo 'sonarqube stage started'
 		def sonarscannerHome = tool name: 'sonarqube-scanner'
-		bat "${sonarscannerHome}/bin/sonar-scanner"
+		bat "\"${sonarscannerHome}/bin/sonar-scanner\""
 		echo 'sonarqube stage completed'			
 	}
 	stage('Deploy Stage') {		
 		echo 'deploy stage started'
-		def mvnHome = tool name: 'maven-3.9.5', type: 'maven'
-		bat "${mvnHome}/bin/mvn install"
+		def mvnHome = tool name: 'maven-3-9-5', type: 'maven'
+		bat "\"${mvnHome}/bin/mvn\" install"
 		echo 'deploy stage completed'			
 	}
 }
