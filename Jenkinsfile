@@ -1,18 +1,18 @@
 node {
 	stage('SCM Checkout') {		
 		echo 'checkout stage started'
-		git 'https://github.com/RajenderSingh/DemoJenkinsfile'
+		git 'https://github.com/Abhyudai18/my-app'
 		echo 'checkout stage completed'			
 	}
 	stage('Compile Stage') {		
 		echo 'compile stage started'
-		def mvnHome = tool name: 'maven-3-9-4', type: 'maven'
+		def mvnHome = tool name: 'maven-3.9.5', type: 'maven'
 		bat "${mvnHome}/bin/mvn clean compile"
 		echo 'compile stage completed'			
 	}
 	stage('Test Stage') {		
 		echo 'test stage started'
-		def mvnHome = tool name: 'maven-3-9-4', type: 'maven'
+		def mvnHome = tool name: 'maven-3.9.5', type: 'maven'
 		bat "${mvnHome}/bin/mvn test"
 		echo 'test stage completed'			
 	}
@@ -24,7 +24,7 @@ node {
 	}
 	stage('Deploy Stage') {		
 		echo 'deploy stage started'
-		def mvnHome = tool name: 'maven-3-9-4', type: 'maven'
+		def mvnHome = tool name: 'maven-3.9.5', type: 'maven'
 		bat "${mvnHome}/bin/mvn install"
 		echo 'deploy stage completed'			
 	}
